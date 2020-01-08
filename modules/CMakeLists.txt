@@ -1,4 +1,4 @@
-add_library(modules STATIC
+add_library(modules SHARED
 	module_parent.cpp include/modules/module_parent.h
 
 	SceAVConfig/SceAVConfig.cpp SceAVConfig/SceAVConfig.h
@@ -170,3 +170,8 @@ add_library(modules STATIC
 )
 target_include_directories(modules PUBLIC include)
 target_link_libraries(modules PUBLIC module)
+
+set_target_properties(modules PROPERTIES OUTPUT_NAME modules
+	ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
+	LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
+	RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")

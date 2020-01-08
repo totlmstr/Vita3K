@@ -44,6 +44,12 @@ if(WIN32)
 	add_definitions (/D "_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS" /D "_CRT_SECURE_NO_WARNINGS")
 endif()
 
+if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+	set(LINUX TRUE)
+endif()
+
 add_subdirectory(external)
 add_subdirectory(vita3k)
+add_subdirectory(modules)
+add_subdirectory(interface)
 add_subdirectory(tools/gen-modules)
