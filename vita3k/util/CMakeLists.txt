@@ -10,6 +10,7 @@ add_library(
     include/util/function_info.h
     include/util/lock_and_find.h
     include/util/log.h
+    include/util/optional.h
     include/util/preprocessor.h
     include/util/resource.h
     include/util/string_utils.h
@@ -20,4 +21,8 @@ add_library(
 )
 
 target_include_directories(util PUBLIC include)
-target_link_libraries(util PUBLIC ${Boost_LIBRARIES} spdlog)
+target_link_libraries(util PUBLIC spdlog)
+
+if(NOT COMPILE_MODERN_CPP)
+	target_link_libraries(util PUBLIC ${Boost_LIBRARIES})
+endif()
