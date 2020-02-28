@@ -13,7 +13,8 @@
 #include <features/state.h>
 #include <gxm/functions.h>
 
-namespace renderer::gl {
+namespace renderer {
+namespace gl {
 static GLenum translate_primitive(SceGxmPrimitiveType primType) {
     R_PROFILE(__func__);
 
@@ -154,4 +155,5 @@ void draw(GLState &renderer, GLContext &context, GxmContextState &state, const F
     state.last_draw_vertex_program = state.vertex_program;
     state.last_draw_fragment_program = state.fragment_program;
 }
-} // namespace renderer::gl
+} // namespace gl
+} // namespace renderer

@@ -26,10 +26,10 @@
 
 typedef uint8_t TtyType;
 
-inline constexpr TtyType TTY_UNKNOWN = 0b00;
-inline constexpr TtyType TTY_IN = 0b01;
-inline constexpr TtyType TTY_OUT = 0b10;
-inline constexpr TtyType TTY_INOUT = TTY_IN | TTY_OUT;
+VITA3K_INLINE_CONSTEXPR TtyType TTY_UNKNOWN = 0b00;
+VITA3K_INLINE_CONSTEXPR TtyType TTY_IN = 0b01;
+VITA3K_INLINE_CONSTEXPR TtyType TTY_OUT = 0b10;
+VITA3K_INLINE_CONSTEXPR TtyType TTY_INOUT = TTY_IN | TTY_OUT;
 
 struct FileInfo {
     // The actual location on the Vita

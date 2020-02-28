@@ -129,7 +129,11 @@ static bool get_game_info(GuiState &gui, HostState &host) {
 
         auto updated = sb.st_mtime;
 #else
+#if !VITA3K_CPP14
         std::time_t updated = fs::last_write_time(game_path);
+#else
+        std::time_t updated;
+#endif
 #endif
         game_info[UPDATED].second = std::asctime(std::localtime(&updated));
 

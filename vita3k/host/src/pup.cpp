@@ -259,7 +259,7 @@ static std::string make_filename(unsigned char *hdr, int64_t filetype) {
     memcpy(&metaoffs, &hdr[16], 8);
 
     if (magic == SCE_MAGIC && version == 3 && flags == 0x30040) {
-        std::vector meta = std::vector<unsigned char>(&hdr[0] + metaoffs, &hdr[0] + (HEADER_LENGTH - metaoffs));
+        auto meta = std::vector<unsigned char>(&hdr[0] + metaoffs, &hdr[0] + (HEADER_LENGTH - metaoffs));
         char t = 0;
         memcpy(&t, &meta[4], 1);
 

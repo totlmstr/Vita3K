@@ -46,7 +46,11 @@ static std::set<std::string> get_file_set(const fs::path &loc, bool dirs_only = 
             cur_set.insert(it->path().stem().string());
         }
 
+#if VITA3K_CPP17 || VITA3K_CPP14
         std::error_code err{};
+#else
+        boost::system::error_code err{};
+#endif
         it.increment(err);
     }
     return cur_set;
@@ -102,7 +106,7 @@ ExitCode serialize_config(ConfigState &cfg, const fs::path &output_path) {
     emitter << cfg.yaml_node;
     emitter << YAML::EndDoc;
 
-    std::ofstream fo(output);
+    std::ofstream fo(output.generic_string());
     if (!fo) {
         return InvalidApplicationPath;
     }
@@ -194,7 +198,7 @@ ExitCode init_config(ConfigState &cfg, int argc, char **argv, const Root &root_p
         return QuitRequested;
     }
 
-    if (command_line.recompile_shader_path.has_value()) {
+    if (command_line.recompile_shader_path) {
         cfg.recompile_shader_path = std::move(command_line.recompile_shader_path);
         return QuitRequested;
     }

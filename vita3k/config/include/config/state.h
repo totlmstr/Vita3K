@@ -23,7 +23,6 @@
 #include <util/fs.h>
 #include <util/optional.h>
 #include <util/vector_utils.h>
-#include <util/optional.h>
 
 // Enum based on members in Config file
 // Used for easier getting of options and their names for config files
@@ -54,11 +53,11 @@ private:
 
     // Perform comparisons with optional settings
     void check_members(const ConfigState &rhs) {
-        if (rhs.vpk_path.has_value())
+        if (rhs.vpk_path)
             vpk_path = rhs.vpk_path;
-        if (rhs.run_title_id.has_value())
+        if (rhs.run_title_id)
             run_title_id = rhs.run_title_id;
-        if (rhs.recompile_shader_path.has_value())
+        if (rhs.recompile_shader_path)
             run_title_id = rhs.run_title_id;
 
         if (!rhs.config_path.empty())
