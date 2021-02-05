@@ -38,13 +38,7 @@ struct VarExport {
     const char *name;
 };
 
-constexpr int var_exports_size =
-#define NID(name, nid)
-#define VAR_NID(name, nid) 1 +
-#include <nids/nids.h>
-    0;
-#undef VAR_NID
-#undef NID
+constexpr int var_exports_size = 0;
 
 const std::array<VarExport, var_exports_size> &get_var_exports();
 

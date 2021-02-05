@@ -247,3 +247,18 @@ endif()
 
 add_subdirectory(ffmpeg)
 add_subdirectory(psvpfstools)
+
+add_library(sqlite3 STATIC
+	"${CMAKE_CURRENT_SOURCE_DIR}/sqlite3/sqlite3.c"
+	"${CMAKE_CURRENT_SOURCE_DIR}/sqlite3/sqlite3.h"
+	"${CMAKE_CURRENT_SOURCE_DIR}/sqlite3/sqlite3ext.h"
+	"${CMAKE_CURRENT_SOURCE_DIR}/sqlite3/shell.c"
+)
+
+target_include_directories(sqlite3 PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/sqlite3")
+if(UNIX)
+	set(THREADS_PREFER_PTHREAD_FLAG ON)
+	find_package(Threads REQUIRED)
+
+	target_link_libraries(sqlite3 PRIVATE Threads::Threads ${CMAKE_DL_LIBS})
+endif()

@@ -36,41 +36,14 @@
 
 static constexpr bool LOG_UNK_NIDS_ALWAYS = false;
 
-#define VAR_NID(name, nid) extern const ImportVarFactory import_##name;
-#define NID(name, nid) extern const ImportFn import_##name;
-#include <nids/nids.h>
-#undef NID
-#undef VAR_NID
-
 struct HostState;
 
 static ImportFn resolve_import(uint32_t nid) {
-    switch (nid) {
-#define VAR_NID(name, nid)
-#define NID(name, nid) \
-    case nid:          \
-        return import_##name;
-#include <nids/nids.h>
-#undef NID
-#undef VAR_NID
-    }
-
     return ImportFn();
 }
 
 const std::array<VarExport, var_exports_size> &get_var_exports() {
-    static std::array<VarExport, var_exports_size> var_exports = {
-#define NID(name, nid)
-#define VAR_NID(name, nid) \
-    {                      \
-        nid,               \
-        import_##name,     \
-        #name              \
-    },
-#include <nids/nids.h>
-#undef VAR_NID
-#undef NID
-    };
+    static std::array<VarExport, var_exports_size> var_exports;
     return var_exports;
 }
 
