@@ -18,7 +18,6 @@
 #pragma once
 
 #include <codec/state.h>
-#include <cpu/functions.h>
 #include <kernel/thread/thread_state.h>
 #include <kernel/types.h>
 #include <mem/ptr.h>
@@ -41,6 +40,9 @@ struct WatchMemory;
 struct InitialFiber;
 
 struct CodecEngineBlock;
+
+struct CPUState;
+struct ModuleRegion;
 
 typedef std::vector<InitialFiber> InitialFibers;
 

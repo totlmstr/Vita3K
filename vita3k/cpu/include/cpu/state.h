@@ -15,32 +15,36 @@
 // with this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-#include <module/write_return_value.h>
+#pragma once
 
-#include <cpu/arm.h>
+#include <cpu/util.h>
 
-void write_return_value(CPUState &cpu, int32_t ret) {
-    write_reg(cpu, 0, ret);
-}
+#include <disasm/state.h>
 
-void write_return_value(CPUState &cpu, int64_t ret) {
-    write_reg(cpu, 0, ret & UINT32_MAX);
-    write_reg(cpu, 1, ret >> 32);
-}
+#include <unicorn/unicorn.h>
 
-void write_return_value(CPUState &cpu, uint32_t ret) {
-    write_reg(cpu, 0, ret);
-}
+struct ModuleRegion;
+struct StackFrame;
 
-void write_return_value(CPUState &cpu, uint64_t ret) {
-    write_reg(cpu, 0, ret & UINT32_MAX);
-    write_reg(cpu, 1, ret >> 32);
-}
+typedef std::unique_ptr<uc_struct, std::function<void(uc_struct *)>> UnicornPtr;
 
-void write_return_value(CPUState &cpu, bool ret) {
-    write_reg(cpu, 0, ret);
-}
+struct CPUState {
+    SceUID thread_id;
+    MemState *mem = nullptr;
+    CallSVC call_svc;
+    ResolveNIDName resolve_nid_name;
+    DisasmState disasm;
+    GetWatchMemoryAddr get_watch_memory_addr;
+    UnicornPtr uc;
+    uc_hook memory_read_hook = 0;
+    uc_hook memory_write_hook = 0;
+    uc_hook code_hook = 0;
+    bool returning = false;
+    std::stack<Address> lr_stack;
 
-void write_return_value(CPUState &cpu, float ret) {
-    write_float_reg(cpu, 0, ret);
-}
+    bool did_break = false;
+    bool did_inject = false;
+
+    std::vector<ModuleRegion> module_regions;
+    std::stack<StackFrame> stack_frames;
+};

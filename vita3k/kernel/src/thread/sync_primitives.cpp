@@ -17,7 +17,6 @@
 
 #include <kernel/thread/sync_primitives.h>
 
-#include <cpu/functions.h>
 #include <kernel/state.h>
 #include <kernel/types.h>
 #include <util/lock_and_find.h>

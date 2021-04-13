@@ -19,7 +19,7 @@
 
 #include "private.h"
 
-#include <cpu/functions.h>
+#include <cpu/arm.h>
 
 #include <spdlog/fmt/fmt.h>
 

@@ -20,6 +20,8 @@
 #include <audio/functions.h>
 #include <config/functions.h>
 #include <config/version.h>
+#include <cpu/arm.h>
+#include <cpu/injection.h>
 #include <gui/imgui_impl_sdl.h>
 #include <host/state.h>
 #include <io/functions.h>

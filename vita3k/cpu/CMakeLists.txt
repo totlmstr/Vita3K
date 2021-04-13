@@ -1,8 +1,13 @@
 add_library(
-cpu
-STATIC
-include/cpu/functions.h
-src/cpu.cpp
+	cpu
+	STATIC
+	include/cpu/arm.h
+	include/cpu/functions.h
+	include/cpu/injection.h
+	include/cpu/state.h
+	include/cpu/util.h
+	src/arm.cpp
+	src/cpu.cpp
 )
 
 target_include_directories(cpu PUBLIC include)

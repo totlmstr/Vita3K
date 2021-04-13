@@ -18,6 +18,7 @@
 #include <modules/module_parent.h>
 
 #include <cpu/functions.h>
+#include <cpu/injection.h>
 #include <host/import_fn.h>
 #include <host/import_var.h>
 #include <host/load_self.h>

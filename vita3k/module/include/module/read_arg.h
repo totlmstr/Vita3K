@@ -20,7 +20,7 @@
 #include "args_layout.h"
 #include "bridge_types.h"
 
-#include <cpu/functions.h>
+#include <cpu/arm.h>
 
 namespace module {
 class vargs;

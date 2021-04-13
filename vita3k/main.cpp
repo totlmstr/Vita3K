@@ -21,6 +21,7 @@
 #include <app/screen_render.h>
 #include <config/functions.h>
 #include <config/version.h>
+#include <cpu/injection.h>
 #include <gui/functions.h>
 #include <gui/state.h>
 #include <host/pkg.h>

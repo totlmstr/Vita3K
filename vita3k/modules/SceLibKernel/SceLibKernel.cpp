@@ -23,6 +23,7 @@
 #include <../SceKernelModulemgr/SceModulemgr.h>
 #include <../SceKernelThreadMgr/SceThreadmgr.h>
 
+#include <cpu/arm.h>
 #include <cpu/functions.h>
 #include <dlmalloc.h>
 #include <host/functions.h>
@@ -1212,8 +1213,8 @@ EXPORT(int, sceKernelGetTimerTime, SceUID timer_handle, SceKernelSysClock *time)
  * \param mod_id UID of the loaded module object
  * \param entry_point Entry point (module_start) of the loaded module
  * \param module Module info
- * \param host 
- * \param export_name 
+ * \param host
+ * \param export_name
  * \param path File name of module file
  * \param error_val Error value on failure
  * \return True on success, false on failure

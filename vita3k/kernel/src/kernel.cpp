@@ -19,6 +19,7 @@
 #include <kernel/state.h>
 #include <kernel/thread/thread_state.h>
 
+#include <cpu/arm.h>
 #include <cpu/functions.h>
 #include <mem/ptr.h>
 #include <util/find.h>

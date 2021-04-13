@@ -16,6 +16,8 @@
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 #include "SceModulemgr.h"
+
+#include <cpu/injection.h>
 #include <host/load_self.h>
 #include <io/functions.h>
 #include <kernel/state.h>

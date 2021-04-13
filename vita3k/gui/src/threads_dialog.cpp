@@ -17,7 +17,7 @@
 
 #include "private.h"
 
-#include <cpu/functions.h>
+#include <cpu/arm.h>
 #include <kernel/thread/thread_functions.h>
 #include <kernel/thread/thread_state.h>
 #include <util/resource.h>

@@ -18,6 +18,7 @@
 #include "SceThreadmgr.h"
 #include <modules/module_parent.h>
 
+#include <cpu/injection.h>
 #include <host/functions.h>
 #include <kernel/functions.h>
 #include <kernel/thread/sync_primitives.h>

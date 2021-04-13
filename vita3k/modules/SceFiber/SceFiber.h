@@ -40,15 +40,6 @@ struct SceFiberOptParam {
     char reserved[128];
 };
 
-typedef struct SceFiber {
-    Ptr<SceFiberEntry> entry;
-    SceUInt32 argOnInitialize;
-    Address addrContext;
-    SceSize sizeContext;
-    char name[32];
-    CPUContext cpu;
-} SceFiber;
-
 BRIDGE_DECL(_sceFiberAttachContextAndRun)
 BRIDGE_DECL(_sceFiberAttachContextAndSwitch)
 BRIDGE_DECL(_sceFiberInitializeImpl)

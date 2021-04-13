@@ -17,7 +17,8 @@
 
 #include <app/functions.h>
 #include <config/state.h>
-#include <cpu/functions.h>
+#include <cpu/injection.h>
+#include <cpu/util.h>
 #include <host/load_self.h>
 #include <kernel/relocation.h>
 #include <kernel/state.h>

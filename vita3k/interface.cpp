@@ -17,6 +17,7 @@
 
 #include "interface.h"
 
+#include <cpu/injection.h>
 #include <gui/functions.h>
 #include <host/functions.h>
 #include <host/load_self.h>

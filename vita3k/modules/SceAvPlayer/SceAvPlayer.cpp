@@ -17,6 +17,7 @@
 
 #include "SceAvPlayer.h"
 
+#include <cpu/functions.h>
 #include <io/functions.h>
 #include <kernel/thread/thread_functions.h>
 #include <util/lock_and_find.h>

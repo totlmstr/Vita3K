@@ -17,12 +17,22 @@
 
 #include "SceFiber.h"
 
-#include "cpu/functions.h"
+#include <cpu/functions.h>
+#include <cpu/injection.h>
 
 #include <util/lock_and_find.h>
 #include <util/log.h>
 
 const static int DEFAULT_FIBER_STACK_SIZE = 4096;
+
+typedef struct SceFiber {
+    Ptr<SceFiberEntry> entry;
+    SceUInt32 argOnInitialize;
+    Address addrContext;
+    SceSize sizeContext;
+    char name[32];
+    CPUContext cpu;
+} SceFiber;
 
 InitialFiber *_findIntialFiber(KernelState &kernel, Address sp) {
     // TODO use interval tree

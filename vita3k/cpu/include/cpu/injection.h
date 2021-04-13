@@ -15,32 +15,39 @@
 // with this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-#include <module/write_return_value.h>
+#pragma once
 
-#include <cpu/arm.h>
+#include <cpu/util.h>
 
-void write_return_value(CPUState &cpu, int32_t ret) {
-    write_reg(cpu, 0, ret);
-}
+#include <mem/util.h>
 
-void write_return_value(CPUState &cpu, int64_t ret) {
-    write_reg(cpu, 0, ret & UINT32_MAX);
-    write_reg(cpu, 1, ret >> 32);
-}
+struct CPUContext {
+    uint32_t cpu_registers[16];
+    uint32_t sp;
+    uint32_t pc;
+    uint32_t lr;
+    uint32_t cpsr;
+};
 
-void write_return_value(CPUState &cpu, uint32_t ret) {
-    write_reg(cpu, 0, ret);
-}
+struct StackFrame {
+    uint32_t addr;
+    uint32_t sp;
+    std::string name;
+};
 
-void write_return_value(CPUState &cpu, uint64_t ret) {
-    write_reg(cpu, 0, ret & UINT32_MAX);
-    write_reg(cpu, 1, ret >> 32);
-}
+struct ModuleRegion {
+    uint32_t nid;
+    std::string name;
+    Address start;
+    uint32_t size;
+    Address vaddr;
+};
 
-void write_return_value(CPUState &cpu, bool ret) {
-    write_reg(cpu, 0, ret);
-}
-
-void write_return_value(CPUState &cpu, float ret) {
-    write_float_reg(cpu, 0, ret);
-}
+struct CPUDepInject {
+    CallImport call_import;
+    CallSVC call_svc;
+    ResolveNIDName resolve_nid_name;
+    GetWatchMemoryAddr get_watch_memory_addr;
+    std::vector<ModuleRegion> module_regions;
+    bool trace_stack;
+};

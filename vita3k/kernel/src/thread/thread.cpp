@@ -18,11 +18,12 @@
 #include <kernel/thread/thread_functions.h>
 #include <kernel/thread/thread_state.h>
 
+#include <kernel/functions.h>
 #include <kernel/state.h>
 
-#include <kernel/functions.h>
-
+#include <cpu/arm.h>
 #include <cpu/functions.h>
+#include <cpu/injection.h>
 #include <util/find.h>
 #include <util/lock_and_find.h>
 #include <util/resource.h>
