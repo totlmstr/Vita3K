@@ -221,6 +221,26 @@ std::string tolower(const std::string &s) {
     return r;
 }
 
+// Modified from: https://stackoverflow.com/a/25385766
+const char* whitespace = " \t\n\r\f\v";
+
+// trim from end of string (right)
+std::string& rtrim(std::string &s, const char* t) {
+    s.erase(s.find_last_not_of(t != nullptr ? t : whitespace) + 1);
+    return s;
+}
+
+// trim from beginning of string (left)
+std::string& ltrim(std::string &s, const char* t) {
+    s.erase(0, s.find_first_not_of(t != nullptr ? t : whitespace));
+    return s;
+}
+
+// trim from both ends of string (right then left)
+std::string& trim(std::string &s, const char* t) {
+    return ltrim(rtrim(s, t != nullptr ? t : whitespace), t != nullptr ? t : whitespace);
+}
+
 } // namespace string_utils
 
 template <>

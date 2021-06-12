@@ -17,4 +17,8 @@ std::basic_string<uint8_t> string_to_byte_array(std::string string);
 std::string toupper(const std::string &s);
 std::string tolower(const std::string &s);
 
+std::string& rtrim(std::string &s, const char* t = nullptr);
+std::string& ltrim(std::string &s, const char* t = nullptr);
+std::string& trim(std::string &s, const char* t = nullptr);
+
 } // namespace string_utils

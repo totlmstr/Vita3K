@@ -214,7 +214,7 @@ bool install_pkg(const std::string &pkg, HostState &host, std::string &p_zRIF, c
     if (!sfo::get_data_by_key(host.app_title, sfo_file, fmt::format("TITLE_{:0>2d}", host.cfg.sys_lang)))
         sfo::get_data_by_key(host.app_title, sfo_file, "TITLE");
     std::replace(host.app_title.begin(), host.app_title.end(), '\n', ' ');
-    boost::trim(host.app_title);
+    host.app_title = string_utils::trim(host.app_title);
     sfo::get_data_by_key(host.app_title_id, sfo_file, "TITLE_ID");
     sfo::get_data_by_key(host.app_category, sfo_file, "CATEGORY");
     sfo::get_data_by_key(host.app_content_id, sfo_file, "CONTENT_ID");
